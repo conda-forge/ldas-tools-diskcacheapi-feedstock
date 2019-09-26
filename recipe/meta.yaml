@@ -1,6 +1,6 @@
 {% set name = "ldas-tools-diskcacheAPI" %}
-{% set version = "2.6.3" %}
-{% set sha256 = "7dca15fbb47d915fb40c75ca990c72ffe622042fa2b625caacb0888115b1f8c7" %}
+{% set version = "2.7.0" %}
+{% set sha256 = "8b86017a30a1d282cc7e241a07c82e7b33b075b487efa74659be6d718940c432" %}
 
 {% set ldas_tools_al_version = "2.6.2" %}
 {% set ldas_tools_ldasgen_version = "2.6.3" %}
@@ -15,7 +15,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:

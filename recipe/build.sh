@@ -1,14 +1,25 @@
 #!/bin/bash
 
-./configure \
-  --prefix=${PREFIX} \
-  --disable-warnings-as-errors \
-  --with-optimization=high \
-  --without-doxygen \
-  --without-dot
+mkdir -p _build
+pushd _build
+
+# link librt to get clock_gettime on older glibc versions
+if [ "$(uname)" == "Linux" ]; then
+	export LDFLAGS="-lrt ${LDFLAGS}"
+fi
+
+# configure
+cmake ${SRC_DIR} \
+	-DCMAKE_INSTALL_PREFIX=${PREFIX} \
+	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	-DCMAKE_INSTALL_LIBDIR="lib" \
+	-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=true
 
 # build
-make -j ${CPU_COUNT}
+cmake --build . --parallel ${CPU_COUNT}
+
+# test
+ctest -V
 
 # install
-make -j ${CPU_COUNT} install
+cmake --build . --target install

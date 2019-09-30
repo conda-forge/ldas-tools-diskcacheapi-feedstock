@@ -1,53 +1,57 @@
 {% set name = "ldas-tools-diskcacheAPI" %}
-{% set version = "2.6.3" %}
-{% set sha256 = "7dca15fbb47d915fb40c75ca990c72ffe622042fa2b625caacb0888115b1f8c7" %}
+{% set version = "2.7.0" %}
+{% set sha256 = "8b86017a30a1d282cc7e241a07c82e7b33b075b487efa74659be6d718940c432" %}
 
-{% set ldas_tools_al_version = "2.6.2" %}
-{% set ldas_tools_ldasgen_version = "2.6.3" %}
+# dependencies
+{% set ldas_tools_cmake_version = "1.0.8" %}
+{% set ldas_tools_al_version = "2.6.3" %}
+{% set ldas_tools_ldasgen_version = "2.7.0" %}
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz"
+  sha256: "{{ sha256 }}"
+  patches:
+    - osx-initd.patch
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
+  run_exports:
+    - {{ pin_subpackage("ldas-tools-diskcacheapi", max_pin="x.x") }}
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - pkg-config  # [not win]
-    - make  # [not win]
+    - cmake >=3.6
+    - pkg-config  # [unix]
   host:
     - boost-cpp
-    - ldas-tools-al >={{ ldas_tools_al_version }}
-    - ldas-tools-ldasgen >={{ ldas_tools_ldasgen_version }}
+    - ldas-tools-al {{ ldas_tools_al_version }}
+    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
+    - ldas-tools-ldasgen {{ ldas_tools_ldasgen_version }}
   run:
     - ldas-tools-al >={{ ldas_tools_al_version }}
     - ldas-tools-ldasgen >={{ ldas_tools_ldasgen_version }}
 
 test:
+  requires:
+    - pkg-config  # [unix]
   commands:
-    # check executables
     - diskcache --help
-    # check libraries
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+    - pkg-config --print-errors --modversion ldastools-diskcache  # [unix]
 
 about:
-  home: https://wiki.ligo.org/Computing/DASWG/LDASTools
-  doc_url: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-diskcacheAPI/diskcache/html/
-  dev_url: https://git.ligo.org/ldastools/LDAS_Tools
-  license: GPLv2
-  license_family: GPL
-  license_file: COPYING
-  summary: LDAS tools diskcacheAPI library
+  home: "https://wiki.ligo.org/Computing/LDASTools"
+  dev_url: "https://git.ligo.org/ldastools/LDAS_Tools"
+  license: "GPL-2.0-or-later"
+  license_family: "GPL"
+  license_file: "COPYING"
+  summary: "LDAS tools diskcacheAPI library"
   description: |
     LDAS tools diskcacheAPI library. This package provides the runtime
     libraries and executables but does not provide the systemd

@@ -43,7 +43,6 @@ test:
     - pkg-config  # [unix]
   commands:
     - diskcache --help
-    - ldas-cache-dump-verify --help
     - pkg-config --print-errors --modversion ldastools-diskcache  # [unix]
 
 about:

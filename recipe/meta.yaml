@@ -3,9 +3,9 @@
 {% set sha256 = "23ad6778367d628958e3219de8a9c7672ee327d67dd78186a9b9d2abc8667f49" %}
 
 # dependencies
-{% set ldas_tools_cmake_version = "1.0.8" %}
-{% set ldas_tools_al_version = "2.6.3" %}
-{% set ldas_tools_ldasgen_version = "2.7.0" %}
+{% set ldas_tools_cmake_version = "1.2.2" %}
+{% set ldas_tools_al_version = "2.6.5" %}
+{% set ldas_tools_ldasgen_version = "2.7.1" %}
 
 package:
   name: {{ name|lower }}

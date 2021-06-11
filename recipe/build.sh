@@ -9,17 +9,18 @@ if [ "$(uname)" == "Linux" ]; then
 fi
 
 # configure
-cmake ${SRC_DIR} \
-	-DCMAKE_INSTALL_PREFIX=${PREFIX} \
-	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-	-DCMAKE_INSTALL_LIBDIR="lib" \
-	-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=true
+cmake \
+	${SRC_DIR} \
+	${CMAKE_ARGS} \
+	-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=true \
+	-DWITH_SYSTEMDSYSTEMUNITDIR=no \
+;
 
 # build
-cmake --build . --parallel ${CPU_COUNT}
+cmake --build . --parallel ${CPU_COUNT} --verbose
 
 # test
-ctest -V
+ctest --parallel ${CPU_COUNT} --verbose
 
 # install
-cmake --build . --target install
+cmake --build . --parallel ${CPU_COUNT} --verbose --target install

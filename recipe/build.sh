@@ -22,7 +22,7 @@ cmake --build . --parallel ${CPU_COUNT} --verbose
 
 # test
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
-	ctest --parallel ${CPU_COUNT} --verbose
+	ctest --verbose
 fi
 
 # install

@@ -17,7 +17,7 @@ source:
     - osx-initd.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage("ldas-tools-diskcacheapi", max_pin="x.x") }}

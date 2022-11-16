@@ -17,10 +17,12 @@ source:
     - osx-initd.patch
 
 build:
-  number: 1
-  skip: true  # [win]
+  error_overlinking: true
+  error_overdepending: true
+  number: 2
   run_exports:
     - {{ pin_subpackage("ldas-tools-diskcacheapi", max_pin="x.x") }}
+  skip: true  # [win]
 
 requirements:
   build:
@@ -30,7 +32,7 @@ requirements:
     - make  # [unix]
     - pkg-config  # [unix]
   host:
-    - boost-cpp
+    - boost-cpp >=1.67
     - ldas-tools-al {{ ldas_tools_al_version }}
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
     - ldas-tools-ldasgen >={{ ldas_tools_ldasgen_version }}

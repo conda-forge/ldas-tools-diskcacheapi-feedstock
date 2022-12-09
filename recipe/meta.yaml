@@ -14,6 +14,9 @@ source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: 6d1b13107cdb608d606243c479f77ca5812f09fbcffb658a579ed59ec7e68333
   patches:
+    # disable static libraries
+    - disable-static.patch
+    # disable OSX launch daemon
     - osx-initd.patch
 
 build:

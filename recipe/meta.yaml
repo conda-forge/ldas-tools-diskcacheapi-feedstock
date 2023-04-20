@@ -1,5 +1,5 @@
 {% set name = "ldas-tools-diskcacheAPI" %}
-{% set version = "2.7.4" %}
+{% set version = "2.7.5" %}
 
 # dependencies
 {% set ldas_tools_cmake_version = "1.2.3" %}
@@ -12,7 +12,7 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 30cd75c84abbd420ba147d6a77cd6dd4cd74443b28603261787c6cf11c93bada
+  sha256: c0aeed0e67f9b9e199fa5f64f76cd4cc6251249c6d51600d80aeec4eb942f4d0
   patches:
     # disable static libraries
     - disable-static.patch

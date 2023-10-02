@@ -22,7 +22,7 @@ source:
 build:
   error_overlinking: true
   error_overdepending: true
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage("ldas-tools-diskcacheapi", max_pin="x.x") }}
   skip: true  # [win]
@@ -35,12 +35,11 @@ requirements:
     - make  # [unix]
     - pkg-config  # [unix]
   host:
-    - boost-cpp
+    - libboost-devel
     - ldas-tools-al {{ ldas_tools_al_version }}
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
     - ldas-tools-ldasgen >={{ ldas_tools_ldasgen_version }}
   run:
-    - boost-cpp
     - ldas-tools-al >={{ ldas_tools_al_version }}
     - ldas-tools-ldasgen >={{ ldas_tools_ldasgen_version }}
 

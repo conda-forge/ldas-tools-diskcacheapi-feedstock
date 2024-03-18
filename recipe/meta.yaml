@@ -35,14 +35,10 @@ requirements:
     - make  # [unix]
     - pkg-config  # [unix]
   host:
-    - boost-cpp
     - ldas-tools-al {{ ldas_tools_al_version }}
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
     - ldas-tools-ldasgen >={{ ldas_tools_ldasgen_version }}
-  run:
-    - boost-cpp
-    - ldas-tools-al >={{ ldas_tools_al_version }}
-    - ldas-tools-ldasgen >={{ ldas_tools_ldasgen_version }}
+    - libboost-devel
 
 test:
   requires:

@@ -22,7 +22,7 @@ source:
 build:
   error_overlinking: true
   error_overdepending: true
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage("ldas-tools-diskcacheapi", max_pin="x.x") }}
   skip: true  # [win]
@@ -30,6 +30,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake >=3.6
     - make  # [unix]

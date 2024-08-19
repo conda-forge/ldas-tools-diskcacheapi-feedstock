@@ -1,0 +1,63 @@
+From ee65c2bde9ca7e892cd81ea86d4f3f49b22b93c5 Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <macleoddm@cardiff.ac.uk>
+Date: Mon, 19 Aug 2024 10:22:31 +0100
+Subject: [PATCH 1/2] diskcache: don't build static libraries
+
+---
+ diskcache/src/CMakeLists.txt         | 1 -
+ diskcache/src/Cache/CMakeLists.txt   | 1 -
+ diskcache/src/Common/CMakeLists.txt  | 1 -
+ diskcache/src/Streams/CMakeLists.txt | 1 -
+ 4 files changed, 4 deletions(-)
+
+diff --git a/diskcache/src/CMakeLists.txt b/diskcache/src/CMakeLists.txt
+index 934b936b2..d0661489a 100644
+--- a/diskcache/src/CMakeLists.txt
++++ b/diskcache/src/CMakeLists.txt
+@@ -197,7 +197,6 @@ cx_target_library(
+   CURRENT ${libdiskcache_la_CURRENT}
+   REVISION ${libdiskcache_la_REVISION}
+   AGE ${libdiskcache_la_AGE}
+-  STATIC
+   SOURCES ${libdiskcache_la_SOURCES}
+   LIBRARIES ${libdiskcache_la_LIBADD}
+   INCLUDE_DIRECTORIES BEFORE PRIVATE
+diff --git a/diskcache/src/Cache/CMakeLists.txt b/diskcache/src/Cache/CMakeLists.txt
+index 45a974741..d7484777f 100644
+--- a/diskcache/src/Cache/CMakeLists.txt
++++ b/diskcache/src/Cache/CMakeLists.txt
+@@ -83,7 +83,6 @@ cx_link_headers( ${HDR_DIR} ${cache_HEADERS} )
+ cx_target_library(
+   TARGET cache
+   CONVENIENCE
+-  STATIC
+   SOURCES ${libcache_la_SOURCES}
+   INCLUDE_DIRECTORIES BEFORE PRIVATE
+     ${CMAKE_CURRENT_SOURCE_DIR}
+diff --git a/diskcache/src/Common/CMakeLists.txt b/diskcache/src/Common/CMakeLists.txt
+index 173b6150b..8156d186b 100644
+--- a/diskcache/src/Common/CMakeLists.txt
++++ b/diskcache/src/Common/CMakeLists.txt
+@@ -57,7 +57,6 @@ cx_link_headers( ${HDR_DIR} ${common_HEADERS} )
+ cx_target_library(
+   TARGET common
+   CONVENIENCE
+-  STATIC
+   SOURCES ${libcommon_la_SOURCES}
+   INCLUDE_DIRECTORIES BEFORE PRIVATE
+     ${CMAKE_CURRENT_SOURCE_DIR}
+diff --git a/diskcache/src/Streams/CMakeLists.txt b/diskcache/src/Streams/CMakeLists.txt
+index 97e3cf7c2..a76b713de 100644
+--- a/diskcache/src/Streams/CMakeLists.txt
++++ b/diskcache/src/Streams/CMakeLists.txt
+@@ -59,7 +59,6 @@ cx_link_headers( ${HDR_DIR} ${streams_HEADERS} )
+ cx_target_library(
+   TARGET streams
+   CONVENIENCE
+-  STATIC
+   SOURCES ${libstreams_la_SOURCES}
+   INCLUDE_DIRECTORIES BEFORE PRIVATE
+     ${CMAKE_CURRENT_SOURCE_DIR}
+-- 
+2.39.2
+

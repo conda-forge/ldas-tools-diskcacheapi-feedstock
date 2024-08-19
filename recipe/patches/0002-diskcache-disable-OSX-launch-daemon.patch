@@ -1,0 +1,25 @@
+From 7f09ce4442f72c3f9a5bf846b4a0f2d2d7d213c8 Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <macleoddm@cardiff.ac.uk>
+Date: Mon, 19 Aug 2024 10:24:04 +0100
+Subject: [PATCH 2/2] diskcache: disable OSX launch daemon
+
+---
+ diskcache/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/diskcache/CMakeLists.txt b/diskcache/CMakeLists.txt
+index 8ee4b18a6..1787acc06 100644
+--- a/diskcache/CMakeLists.txt
++++ b/diskcache/CMakeLists.txt
+@@ -184,7 +184,7 @@ cm_conditional(COND_HAVE_SYSTEMD EXPRESSION NOT "${WITH_SYSTEMDSYSTEMUNITDIR}" S
+ 
+ cm_conditional( RED_HAT_INITD EXISTS /etc/redhat-release )
+ cm_conditional( DEBIAN_INITD EXISTS /etc/debian_version )
+-cm_conditional( OSX_INITD EXISTS /Library/LaunchDaemons )
++set( OSX_INITD FALSE )
+ cm_conditional( SOLARIS_INITD EXISTS /usr/sbin/svccfg )
+ 
+ #========================================================================
+-- 
+2.39.2
+

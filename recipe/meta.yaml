@@ -14,15 +14,13 @@ source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: 78100bba5a0b3513bc290d6484a893c304cf44da3a86c45cabfa525bf78c7fdd
   patches:
-    # disable static libraries
-    - disable-static.patch
-    # disable OSX launch daemon
-    - osx-initd.patch
+    - patches/0001-diskcache-don-t-build-static-libraries.patch
+    - patches/0002-diskcache-disable-OSX-launch-daemon.patch
 
 build:
   error_overlinking: true
   error_overdepending: true
-  number: 1
+  number: 2
   run_exports:
     - {{ pin_subpackage("ldas-tools-diskcacheapi", max_pin="x.x") }}
   skip: true  # [win]

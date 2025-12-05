@@ -1,5 +1,5 @@
 {% set name = "ldas-tools-diskcacheAPI" %}
-{% set version = "2.7.7" %}
+{% set version = "2.7.8" %}
 
 # dependencies
 {% set ldas_tools_cmake_version = "1.2.3" %}
@@ -12,7 +12,7 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 78100bba5a0b3513bc290d6484a893c304cf44da3a86c45cabfa525bf78c7fdd
+  sha256: ca23b3404c61c58b7ba77e18347dc42e1fa6f114a5f877ebdcaca1c86fd53e95
   patches:
     - patches/0001-diskcache-don-t-build-static-libraries.patch
     - patches/0002-diskcache-disable-OSX-launch-daemon.patch
@@ -20,7 +20,7 @@ source:
 build:
   error_overlinking: true
   error_overdepending: true
-  number: 3
+  number: 0
   run_exports:
     - {{ pin_subpackage("ldas-tools-diskcacheapi", max_pin="x.x") }}
   skip: true  # [win]

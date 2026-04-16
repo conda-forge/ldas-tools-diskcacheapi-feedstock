@@ -15,7 +15,6 @@ LDAS tools diskcacheAPI library. This package provides the runtime
 libraries and executables but does not provide the systemd
 infrastructure to run diskcache as a service.
 
-
 Current build status
 ====================
 

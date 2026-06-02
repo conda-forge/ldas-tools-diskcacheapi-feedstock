@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: ldas-tools-diskcacheAPI
-  version: 2.7.8
+  version: "2.7.10"
   # dependencies
   ldas_tools_cmake_version: 1.3.1
   ldas_tools_al_version: 2.7.0
@@ -14,7 +14,7 @@ package:
 
 source:
   url: https://software.ligo.org/sources/source/${{ name }}-${{ version }}.tar.gz
-  sha256: ca23b3404c61c58b7ba77e18347dc42e1fa6f114a5f877ebdcaca1c86fd53e95
+  sha256: 5c2e671912c8418ea9bd6cdb718a6513af9e153c6498e6b888d6e05f82a22699
   patches:
     - patches/0001-diskcache-don-t-build-static-libraries.patch
     - patches/0002-diskcache-disable-OSX-launch-daemon.patch

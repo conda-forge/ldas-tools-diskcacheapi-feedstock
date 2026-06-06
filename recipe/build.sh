@@ -6,6 +6,7 @@ pushd _build
 # configure
 cmake \
   ${CMAKE_ARGS} \
+  -DBUILD_STATIC_LIBS:BOOL=OFF \
   -DBUILD_TESTING:BOOL=true \
   -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen:BOOL=true \
   -DCMAKE_OSX_ARCHITECTURES:STRING="${OSX_ARCH}" \

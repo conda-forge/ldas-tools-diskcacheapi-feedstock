@@ -15,8 +15,6 @@ package:
 source:
   url: https://software.ligo.org/sources/source/${{ name }}-${{ version }}.tar.gz
   sha256: cc3fb021c9b20512f5404a7e7d54c50bdfcd0ec7e2106e199f3b4156bb665ecf
-  patches:
-    - patches/0002-diskcache-disable-OSX-launch-daemon.patch
 
 build:
   number: 0

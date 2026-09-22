@@ -2,11 +2,11 @@ schema_version: 1
 
 context:
   name: ldas-tools-diskcacheAPI
-  version: "2.7.11"
+  version: "2.7.12"
   # dependencies
-  ldas_tools_cmake_version: 1.4.0
-  ldas_tools_al_version: 2.8.0
-  ldas_tools_ldasgen_version: 2.7.5
+  ldas_tools_cmake_version: 1.5.1
+  ldas_tools_al_version: 2.10.1
+  ldas_tools_ldasgen_version: 2.7.8
 
 package:
   name: ${{ name|lower }}
@@ -14,7 +14,7 @@ package:
 
 source:
   url: https://software.ligo.org/sources/source/${{ name }}-${{ version }}.tar.gz
-  sha256: cc3fb021c9b20512f5404a7e7d54c50bdfcd0ec7e2106e199f3b4156bb665ecf
+  sha256: 39a932209e8a642ebe33e837a4ad56fc953ad915dbc968a29fd5459facfd9219
 
 build:
   number: 0
